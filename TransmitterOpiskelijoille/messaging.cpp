@@ -19,7 +19,7 @@ Messaging::~Messaging()
 }
 void Messaging::createMessage(Measurement m)
 {
-
+  
 
 }
 bool Messaging::sendMessage(uint8_t id, uint8_t flags)
@@ -32,7 +32,7 @@ bool Messaging::sendMessage(uint8_t id, uint8_t flags)
      }
      driver.setModeTx();
      uint8_t to = RECEIVER_ADDRESS;
-     uint8_t from = Tänne sinun oma osoitteesi  //TRANSMITTER_ADDRESS;
+     uint8_t from = TRANSMITTER_ADDRESS;
      
      pmanager->setHeaderTo(to);
      pmanager->setHeaderFrom(from);
@@ -51,18 +51,20 @@ bool Messaging::sendMessage(uint8_t id, uint8_t flags)
 }
 bool Messaging::receiveACK()
 {
+    
     driver.setModeRx();
     unsigned long start = millis(); 
     unsigned long timeout = millis()-start;
     bool receiverResult = false;
-    uint8_t to;
-    uint8_t from;
+    uint8_t to; // = RECEIVER_ADDRESS;
+    uint8_t from; // = TRANSMITTER_ADDRESS;
     uint8_t len;
     uint8_t id;
     uint8_t flags;
     while((timeout<1500) && (!pmanager->available()))
     {
-      timeout = millis()-start;       
+      timeout = millis()-start;    
+      
     }
 
     // Jos while luupista päästään, niin on saatu ACK tai on kulunut 1s

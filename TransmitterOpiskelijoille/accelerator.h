@@ -12,15 +12,23 @@ struct Measurement
 
 class Accelerator
 {
-public:
-  Accelerator();
-  ~Accelerator();
-  void makeMeasurement();
-  Measurement getMeasurement();
+  public:
+    Accelerator();
+    ~Accelerator();
+    void tulostus();
+    void makeMeasurement();
+    Measurement getMeasurement();
+   
+    
 
-private:
-  Measurement m;
- 
+  private:
+    Measurement m;
+     
+    // Määritellään kytkentänavat kiihtyvyysanturille:
+    const int xPin   = A1;   // x-kanavan mittaus
+    const int yPin   = A2;   // y-kanava
+    const int zPin   = A3;   // z-kanava
+  
 };
 
 #endif // ACCELERATOR_H
