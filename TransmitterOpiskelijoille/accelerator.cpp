@@ -19,6 +19,8 @@ void Accelerator::makeMeasurement()
   m.x = analogRead(xPin);
   m.y = analogRead(yPin);
   m.z = analogRead(zPin);
+
+
 }
 
 Measurement Accelerator::getMeasurement()
