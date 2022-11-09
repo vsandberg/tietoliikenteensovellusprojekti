@@ -15,6 +15,8 @@ void setup()
   pinMode(VccPin2, OUTPUT);     // Kiihtyvyysanturin käyttöjännite Vcc
   pinMode(GNDPin2, OUTPUT);     // Kiihtyvyysanturin GND
 
+
+
   // Asetetaan syöttöjännite
   digitalWrite(VccPin2, HIGH);
   delayMicroseconds(2);
@@ -27,6 +29,21 @@ void loop()
 {
   Accelerator Aobject;
   Messaging Mobject;
+
+  Serial.println("Give arduino rotation direction");
+  int RotationDirection = 0;
+  
+  
+  
+  while (RotationDirection == 0)
+  {
+    if (Serial.available() > 0)
+    {
+      RotationDirection = Serial.parseInt();
+
+    }
+  }
+  
   Serial.println("Give number how many measurements");
   int NumberOfMeasurements = 0;
   
@@ -40,6 +57,8 @@ void loop()
 
     }
   }
+  
+  
  
 
   for (int M = 0; M < NumberOfMeasurements; M++)
@@ -49,7 +68,7 @@ void loop()
     Measurement m = Aobject.getMeasurement();
     Aobject.tulostus();
     uint8_t id = M;
-    uint8_t flags = 0xff;
+    uint8_t flags = RotationDirection;
     Mobject.createMessage(m);
     if (Mobject.sendMessage(id, flags))
     {

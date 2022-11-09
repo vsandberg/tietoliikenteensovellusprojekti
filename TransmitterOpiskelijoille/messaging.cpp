@@ -19,9 +19,22 @@ Messaging::~Messaging()
 }
 void Messaging::createMessage(Measurement m)
 {
+  Data[0] = (m.x>>8);
+  Data[1] = (m.x & 0x00ff);
+  Data[2] = (m.y>>8);
+  Data[3] = (m.y & 0x00ff);
+  Data[4] = (m.z>>8);
+  Data[5] = (m.z & 0x00ff);
   
-
+  Serial.println(Data[0]);
+  Serial.println(Data[1]);
+  Serial.println(Data[2]);
+  Serial.println(Data[3]);
+  Serial.println(Data[4]);
+  Serial.println(Data[5]);
 }
+
+
 bool Messaging::sendMessage(uint8_t id, uint8_t flags)
 {
      unsigned long start = millis(); 
@@ -41,7 +54,7 @@ bool Messaging::sendMessage(uint8_t id, uint8_t flags)
      
      bool returnValue = false;
   
-     if (pmanager->sendto(data, messageLength, RECEIVER_ADDRESS))
+     if (pmanager->sendto(Data, messageLength, RECEIVER_ADDRESS))
      {
         returnValue = true;
      }
