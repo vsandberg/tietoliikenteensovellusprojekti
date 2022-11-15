@@ -2,14 +2,14 @@
 #include "accelerator.h"
 
 
-// 0 = X + ylös
-// 1 = X - alas
+// 1 = X + ylös
+// 2 = X - alas
 
-// 2 = Y + ylös
-// 3 = Y - alas
+// 3 = Y + ylös
+// 4 = Y - alas
 
-// 4 = Z + ylös
-// 5 = Z - alas
+// 5 = Z + ylös
+// 6 = Z - alas
 
 
 
@@ -19,6 +19,7 @@ void setup()
   // Kiihtvyys-anturin napojen määrittely:
   const int GNDPin2 = A4;  // laitteen maa-napa
   const int VccPin2 = A0;  // Käyttöjännite
+
   pinMode(VccPin2, OUTPUT);     // Kiihtyvyysanturin käyttöjännite Vcc
   pinMode(GNDPin2, OUTPUT);     // Kiihtyvyysanturin GND
 
@@ -37,7 +38,7 @@ void loop()
   Accelerator Aobject;
   Messaging Mobject;
 
-  Serial.println("Give arduino rotation // 1 - 5");
+  Serial.println("Give arduino rotation // 1 - 6");
   int RotationDirection = 0;
   
   
@@ -80,18 +81,23 @@ void loop()
     if (Mobject.sendMessage(id, flags))
     {
       Serial.println("Successfull transmission");
+     
     }
     else
     {
       Serial.println("Transmission fails");
+      Serial.println("Successfull transmission");
+      
     }
     if (Mobject.receiveACK())
     {
       Serial.println("Receiver got message, going to next measurement");
+      
     }
     else
     {
       Serial.println("Receiver did not get the message. Need to resend it");
+      
       M--;  // Let's just rewind for loop
     }
   } // end of for
