@@ -2,7 +2,14 @@
 #include "accelerator.h"
 
 
+// 0 = X + ylös
+// 1 = X - alas
 
+// 2 = Y + ylös
+// 3 = Y - alas
+
+// 4 = Z + ylös
+// 5 = Z - alas
 
 
 
@@ -30,7 +37,7 @@ void loop()
   Accelerator Aobject;
   Messaging Mobject;
 
-  Serial.println("Give arduino rotation direction");
+  Serial.println("Give arduino rotation // 1 - 5");
   int RotationDirection = 0;
   
   
@@ -84,8 +91,8 @@ void loop()
     }
     else
     {
-      Serial.println("Reciver did not get the message. Need to resend it");
-      //M--;  // Let's just revind for loop
+      Serial.println("Receiver did not get the message. Need to resend it");
+      M--;  // Let's just rewind for loop
     }
   } // end of for
 }   // end of loop
