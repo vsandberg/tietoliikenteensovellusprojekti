@@ -1,40 +1,81 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
-
-data = np.loadtxt('C:/Users/sandb/Desktop/koneoppimisenperusteet/projektiviikko5/putty.log')
-
-datax = data[0::3]
-datay = data[1::3]
-dataz = data[2::3]
-
-fig = plt.figure()
-ax = fig.add_subplot(projection='3d')
-ax.scatter(datax,datay,dataz)
-ax.set_xlabel('x')
-ax.set_ylabel('y')
-ax.set_zlabel('z')
-#plt.show()
-
-numberOfRows = len(data)/3
-numberOfRows = int(numberOfRows)
-min = np.min(data)
-max = np.max(data)
-
-random = np.random.randint(min,max,size=(4,3))
-print(random)
-
-centerPointCumulativeSum = np.zeros((4,3)) # . Tähän summataan aina voittavalle keskipisteelle yhden datapisteen x,y,z komponentit.
-print(centerPointCumulativeSum)
-
-Counts = np.zeros((1,4)) # tänne kasvatetaan aina voittavan keskipisteen datapisteiden lukumäärää yhdellä jokaisen voiton jälkeen.
-print(Counts)
-
-Distances = np.zeros((1,4)) # tähän talletetaan laskennan edetessä yksittäisen x,y,z pisteen etäisyys kaikkiin keskipisteet datarakenteessa oleviin 4 keskipisteeseen ja nuo 4 etäisyysarvoa talletetaan tähän muuttujaan.
-print(Distances)
+from numpy import linalg as LA
 
 
 
+def rows(data):
+    numberOfRows = len(data)/3
+    numberOfRows = int(numberOfRows)
+    return numberOfRows
+
+def randomData():
+    random = np.random.randint(min,max,size=(4,3))
+    return random
+
+def dataprocessing(numberOfRows):
+    datamatrix = np.zeros((numberOfRows,3))
+    datamatrix[:,0] = data[0::3]
+    datamatrix[:,1] = data[1::3]
+    datamatrix[:,2] = data[2::3]
+    return datamatrix
+
+def kMeans(random,datamatrix):
+    centerPointCumulativeSum = np.zeros((4,3))
+    Counts = np.zeros(4) 
+    values = np.zeros(4)
+    avgDistance = np.zeros((4,3))
+    
+    for i in range(numberOfRows):
+        for j in range(4):
+            value = np.abs(np.sqrt(np.power((random[j,0]- datamatrix[i,0]),2) + # X
+                            np.power((random[j,1]- datamatrix[i,1]),2) +        # Y
+                            np.power((random[j,2]- datamatrix[i,2]),2)))        # Z
+            values[j] = value
+            
+        p = np.argmin(values)
+        Counts[p] += 1
+        avgDistance[0] = (centerPointCumulativeSum[0] / Counts[0])
+        avgDistance[1] = (centerPointCumulativeSum[1] / Counts[1])
+        avgDistance[2] = (centerPointCumulativeSum[2] / Counts[2])
+        avgDistance[3] = (centerPointCumulativeSum[3] / Counts[3])
+        
+        # laskentakaava avg distanceihin
+        Flag = np.min(Counts)
+        centerPointCumulativeSum[p,0:3] += datamatrix[i,0:3]
+    if Flag == 0:
+        random = randomData()
+        kMeans(random,datamatrix)
+    else :
+        #print("centerpointcumulativesum : \n", centerPointCumulativeSum, "\n")
+        print(avgDistance) 
+            
+
+
+    
+if __name__=="__main__":
+    data = np.loadtxt('C:/Users/sandb/Desktop/koneoppimisenperusteet/projektiviikko5/putty.log')
+
+    datax = data[0::3]
+    datay = data[1::3]
+    dataz = data[2::3]
+
+    fig = plt.figure()
+    ax = fig.add_subplot(projection='3d')
+    ax.scatter(datax,datay,dataz)
+    ax.set_xlabel('x')
+    ax.set_ylabel('y')
+    ax.set_zlabel('z')
+    #plt.show()
+    global min
+    global max
+    min = np.min(data)
+    max = np.max(data)
+    
+    random = randomData()
+    numberOfRows = rows(data)
+    datamatrix = dataprocessing(numberOfRows)
+    kMeans(random,datamatrix)
 
 
 
