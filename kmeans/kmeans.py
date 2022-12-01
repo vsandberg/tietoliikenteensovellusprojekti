@@ -21,34 +21,43 @@ def dataprocessing(numberOfRows):
     return datamatrix
 
 def kMeans(random,datamatrix):
-    centerPointCumulativeSum = np.zeros((4,3))
-    Counts = np.zeros(4) 
-    values = np.zeros(4)
-    avgDistance = np.zeros((4,3))
-    
-    for i in range(numberOfRows):
-        for j in range(4):
-            value = np.abs(np.sqrt(np.power((random[j,0]- datamatrix[i,0]),2) + # X
-                            np.power((random[j,1]- datamatrix[i,1]),2) +        # Y
-                            np.power((random[j,2]- datamatrix[i,2]),2)))        # Z
-            values[j] = value
-            
-        p = np.argmin(values)
-        Counts[p] += 1
-        centerPointCumulativeSum[p,0:3] += datamatrix[i,0:3]
-        
-        for a in range (4):
-            avgDistance[a] = (centerPointCumulativeSum[a] / Counts[a])
-            avgDistance = np.around(avgDistance,2) # kahden decimaalin tarkkuudella
-            
-        Flag = np.min(Counts)
-        
-    if Flag == 0:
+    for k in range(10):
+        centerPointCumulativeSum = np.zeros((4,3))
+        Counts = np.zeros(4) 
+        values = np.zeros(4)
+        avgDistance = np.zeros((4,3))
+        for i in range(numberOfRows):
+            for j in range(4):
+                value = np.abs(np.sqrt(np.power((random[j,0]- datamatrix[i,0]),2) + # X
+                                np.power((random[j,1]- datamatrix[i,1]),2) +        # Y
+                                np.power((random[j,2]- datamatrix[i,2]),2)))        # Z
+                values[j] = value
+            p = np.argmin(values)
+            Counts[p] += 1
+            centerPointCumulativeSum[p,0:3] += datamatrix[i,0:3]
+
+            #Flag = np.min(Counts)
+        for f in range(4):
+            if Counts[f] == 0:
+                avgDistance[f] = np.random.randint(min,max,size=3)
+
+            else:
+                avgDistance[f] = (centerPointCumulativeSum[f] / Counts[f])
+                avgDistance = np.around(avgDistance,4) # kahden decimaalin tarkkuudella
+
+        print(avgDistance, "\n")
         random = randomData()
-        kMeans(random,datamatrix)
-    else :
-        print("average distance : \n", avgDistance)
+
+        
+
+    
+        
             
+            
+            
+        
+        
+
 
 
     
@@ -68,9 +77,10 @@ if __name__=="__main__":
     #plt.show()
     global min
     global max
+    global rounds
+    rounds = 3
     min = np.min(data)
     max = np.max(data)
-    L = 1
     random = randomData()
     numberOfRows = rows(data)
     datamatrix = dataprocessing(numberOfRows)
