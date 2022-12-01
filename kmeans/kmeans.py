@@ -35,20 +35,19 @@ def kMeans(random,datamatrix):
             
         p = np.argmin(values)
         Counts[p] += 1
-        avgDistance[0] = (centerPointCumulativeSum[0] / Counts[0])
-        avgDistance[1] = (centerPointCumulativeSum[1] / Counts[1])
-        avgDistance[2] = (centerPointCumulativeSum[2] / Counts[2])
-        avgDistance[3] = (centerPointCumulativeSum[3] / Counts[3])
-        
-        # laskentakaava avg distanceihin
-        Flag = np.min(Counts)
         centerPointCumulativeSum[p,0:3] += datamatrix[i,0:3]
+        
+        for a in range (4):
+            avgDistance[a] = (centerPointCumulativeSum[a] / Counts[a])
+            avgDistance = np.around(avgDistance,2) # kahden decimaalin tarkkuudella
+            
+        Flag = np.min(Counts)
+        
     if Flag == 0:
         random = randomData()
         kMeans(random,datamatrix)
     else :
-        #print("centerpointcumulativesum : \n", centerPointCumulativeSum, "\n")
-        print(avgDistance) 
+        print("average distance : \n", avgDistance)
             
 
 
@@ -71,7 +70,7 @@ if __name__=="__main__":
     global max
     min = np.min(data)
     max = np.max(data)
-    
+    L = 1
     random = randomData()
     numberOfRows = rows(data)
     datamatrix = dataprocessing(numberOfRows)
