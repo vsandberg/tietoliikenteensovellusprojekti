@@ -3,7 +3,7 @@
 
 
 # Kmeans
-![image](https://user-images.githubusercontent.com/99398876/205618281-b4d472ab-4305-4f20-ac62-1881dd22a3a4.png)
+![image](https://user-images.githubusercontent.com/99398876/205662060-edba5896-98dd-46a0-a435-34141e5c69a0.png)
 
 
 # arkkitehtuurikaavio
