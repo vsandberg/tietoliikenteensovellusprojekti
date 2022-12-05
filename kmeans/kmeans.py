@@ -11,16 +11,11 @@ def rows(data):
 
 def dataprocessing(numberOfRows,data):
     datamatrix = np.zeros((numberOfRows,3))
-    
     datamatrix[:,0] = data.values[0::,5]
     datamatrix[:,1] = data.values[0::,6]
     datamatrix[:,2] = data.values[0::,7]
-    
-  
     return datamatrix
     
-
-
 
 def randomData():
     random = np.random.randint(min,max,size=(6,3))
@@ -74,16 +69,12 @@ if __name__=="__main__":
     
     filename = "C:/Users/sandb/Desktop/koneoppimisenperusteet/projektiviikko5/file.csv"
     data = pd.read_csv(filename, delimiter=";")
-    
-    #data = np.loadtxt('C:/Users/sandb/Desktop/koneoppimisenperusteet/projektiviikko5/putty.log')
-    
+
     global min
     global max
-    global rounds
     min = np.min(data.values[0::,5:7])
     max = np.max(data.values[0::,5:7])
 
-    
     numberOfRows = rows(data)
     datamatrix = dataprocessing(numberOfRows,data)
     random = randomData()
