@@ -62,6 +62,26 @@ def kMeans(random,datamatrix):
     ax.set_ylabel('y')
     ax.set_zlabel('z')
     plt.show()
+    
+    
+    headerData = avgDistance
+    
+    with open('projektiviikko5/keskipisteet.h', 'w') as f:
+        line = "float w[3][6] = {"
+        for i in range(5):
+            line = line + "{"
+            outputThis = np.array2string(headerData[i,:],precision=3,separator=',')
+            line = line + outputThis[1:len(outputThis)-1]
+            line = line + "},"
+        outputThis = np.array2string(headerData[5,:],precision=3,separator=',')
+        line = line + "{"
+        line = line + outputThis[1:len(outputThis)-1]
+        line = line + "}"
+        line = line + "};"
+        f.write(line)
+        f.write('\n')
+    f.close()
+
         
 
 
