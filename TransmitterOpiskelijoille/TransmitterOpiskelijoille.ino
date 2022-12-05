@@ -1,6 +1,6 @@
 #include "messaging.h"
 #include "accelerator.h"
-
+#include "keskipisteet.h"
 
 // 1 = X + ylös
 // 2 = X - alas
@@ -31,10 +31,17 @@ void setup()
   digitalWrite(GNDPin2, LOW);
   delayMicroseconds(2);
 
+
 }
 
 void loop()
 {
+  float value;
+  int i;
+  int j;
+  int location;
+  
+  
   Accelerator Aobject;
   Messaging Mobject;
 
@@ -69,7 +76,7 @@ void loop()
   
  
 
-  for (int M = 0; M < NumberOfMeasurements; M++)
+  for (int M = 0; M < NumberOfMeasurements;)
   {
     
     Aobject.makeMeasurement();
@@ -78,27 +85,29 @@ void loop()
     uint8_t id = M;
     uint8_t flags = RotationDirection;
     Mobject.createMessage(m);
-    if (Mobject.sendMessage(id, flags))
+    float minvalue = 500;
+    for (int j = 0; j < 6;)
     {
-      Serial.println("Successfull transmission");
-     
-    }
-    else
-    {
-      Serial.println("Transmission fails");
-      Serial.println("Successfull transmission");
-      
-    }
-    if (Mobject.receiveACK())
-    {
-      Serial.println("Receiver got message, going to next measurement");
-      
-    }
-    else
-    {
-      Serial.println("Receiver did not get the message. Need to resend it");
-      
-      M--;  // Let's just rewind for loop
-    }
+                value = abs(sqrt(pow((w[j][0]- m.x),2) +             
+                                pow((w[j][1]- m.y),2) +        
+                                pow((w[j][2]- m.z),2)));
+                //Serial.println(value);
+                
+
+       
+          if (value < minvalue)
+          {
+            minvalue = value;
+            location = w[j][3];
+          }
+          
+           j++;     
+    }//end for j
+  Serial.print(RotationDirection);
+  Serial.print(",");
+  Serial.println(location);
+    
+    
+    M++;  // Let's just rewind for loop
   } // end of for
 }   // end of loop

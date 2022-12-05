@@ -4,7 +4,7 @@
 
 Messaging::Messaging()
 {
-  Serial.println("messaging created!");
+  //Serial.println("messaging created!");
   pmanager = new RHReliableDatagram(driver, TRANSMITTER_ADDRESS);
  
   if (!pmanager->init())
@@ -14,7 +14,7 @@ Messaging::Messaging()
 
 Messaging::~Messaging()
 {
-  Serial.println("Messaging deleted!");
+  //Serial.println("Messaging deleted!");
   delete pmanager;
 }
 void Messaging::createMessage(Measurement m)
@@ -26,12 +26,12 @@ void Messaging::createMessage(Measurement m)
   Data[4] = (m.z>>8);
   Data[5] = (m.z & 0x00ff);
   
-  Serial.println(Data[0]);
-  Serial.println(Data[1]);
-  Serial.println(Data[2]);
-  Serial.println(Data[3]);
-  Serial.println(Data[4]);
-  Serial.println(Data[5]);
+  //Serial.println(Data[0]);
+  //Serial.println(Data[1]);
+  //Serial.println(Data[2]);
+  //Serial.println(Data[3]);
+  //Serial.println(Data[4]);
+  //Serial.println(Data[5]);
 }
 
 
