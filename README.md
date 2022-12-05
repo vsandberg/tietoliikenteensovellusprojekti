@@ -2,7 +2,7 @@
 
 
 
-# kmeans opetuskuva
+# Kmeans
 ![image](https://user-images.githubusercontent.com/99398876/205618281-b4d472ab-4305-4f20-ac62-1881dd22a3a4.png)
 
 
