@@ -3,8 +3,10 @@
 
 
 # Kmeans
-![image](https://user-images.githubusercontent.com/99398876/205662060-edba5896-98dd-46a0-a435-34141e5c69a0.png) ![image](https://user-images.githubusercontent.com/99398876/206994697-35a1516c-5424-4507-93c8-72416099b257.png)
+![image](https://user-images.githubusercontent.com/99398876/205662060-edba5896-98dd-46a0-a435-34141e5c69a0.png) 
 
+# Confusion matrix
+![image](https://user-images.githubusercontent.com/99398876/206994697-35a1516c-5424-4507-93c8-72416099b257.png)
 
 
 # arkkitehtuurikaavio
