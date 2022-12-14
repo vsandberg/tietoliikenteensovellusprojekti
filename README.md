@@ -24,7 +24,7 @@ Mitattu sata kertaa jokaisessa kuudessa suunnassa ja niiden perusteellä tuloste
 
 # kmeans harjoitustehtävä
 
-Valmiilla datalla tehty harjoitus
+Valmiilla datalla neljällä pisteellä
 
 ![image](https://user-images.githubusercontent.com/99398876/204475630-815fb3b7-66dc-460f-a5cb-d410711c659b.png)
 
