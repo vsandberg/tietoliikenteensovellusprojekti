@@ -1,7 +1,7 @@
 # tietoliikenteen sovellusprojekti syksy 2022 / Ville Sandberg
 
 # arkkitehtuurikaavio
-![arkkitehtuurikaavio](https://user-images.githubusercontent.com/99398876/199468858-7a31d180-b60e-4c1e-b104-fa0673d66750.PNG)
+![arkkitehtkaavio](https://user-images.githubusercontent.com/99398876/207575739-eff09a86-39f3-411a-a2eb-e9300c74c337.PNG)
 
 Tavoitteena oli koodata Arduinolle client, joka mittaa kiihtyvyysanturin dataa ja lähettää sen 433Mhz radiorajapinnan yli IoT-reitittimelle (Rasberry pi) tallennettavaksi tie-tokantaan. Tämän jälkeen Pythonil-la koodattiin ohjelma joka hakee datan tietokannasta HTTP Api:n kautta ja välittää sen K-Means algoritmille.
 
