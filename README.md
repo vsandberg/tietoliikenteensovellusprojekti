@@ -9,7 +9,7 @@ Tavoitteena oli koodata Arduinolle client, joka mittaa kiihtyvyysanturin dataa j
 
 # Kmeans
 
-Punaisilla tähdillä arvatut pisteet kuudessa eri kiihtyvyysanturin asennossa ja oma data vihreillä palloilla
+Punaisilla tähdillä arvatut pisteet kuudessa eri kiihtyvyysanturin asennossa ja oma data iteroituna vihreillä palloilla.
 
 ![image](https://user-images.githubusercontent.com/99398876/205662060-edba5896-98dd-46a0-a435-34141e5c69a0.png) 
 
@@ -23,6 +23,9 @@ Mitattu sata kertaa jokaisessa kuudessa suunnassa ja niiden perusteellä tuloste
 
 
 # kmeans harjoitustehtävä
+
+Valmiilla datalla tehty harjoitus
+
 ![image](https://user-images.githubusercontent.com/99398876/204475630-815fb3b7-66dc-460f-a5cb-d410711c659b.png)
 
 
