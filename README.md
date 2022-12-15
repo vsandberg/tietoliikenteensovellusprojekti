@@ -1,7 +1,8 @@
 # Tietoliikenteen sovellusprojekti
    # Syksy 2022 /  Ville Sandberg
 
-
+# 
+# 
 
 # Arkkitehtuurikaavio
 
