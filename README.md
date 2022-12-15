@@ -1,5 +1,5 @@
 # Tietoliikenteen sovellusprojekti
-   # Syksy 2022 /  Ville Sandberg
+# Syksy 2022 /  Ville Sandberg
 
 # 
 # 
