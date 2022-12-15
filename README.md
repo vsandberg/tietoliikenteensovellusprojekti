@@ -7,7 +7,7 @@ Tavoitteena oli koodata Arduinolle client, joka mittaa kiihtyvyysanturin dataa j
 ![arkkitehtkaavio](https://user-images.githubusercontent.com/99398876/207575739-eff09a86-39f3-411a-a2eb-e9300c74c337.PNG)
 
 
-#Arduino mittaukset
+# Arduino mittaukset
 
 Kuvassa arduino kytkentä käyttäen GY-61 kiihtyvyysanturia sekä lähetintä ja vastaanotinta mittausten siirtämikseksi tietokantaan
 ![arduinomittaukset](https://user-images.githubusercontent.com/99398876/207831490-312a3bac-0d3f-4d4f-b671-dd9417fa86c6.PNG)
